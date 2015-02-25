@@ -1,0 +1,22 @@
+[
+    {
+        "cidr": "192/8", 
+        "note": "Unknown Subnet", 
+        "type": "network"
+    }, 
+    {
+        "cidr": "192.168/16", 
+        "note": "Unknown Subnet", 
+        "type": "network"
+    }, 
+    {
+        "cidr": "192.168.1/24", 
+        "note": "test", 
+        "type": "network"
+    }, 
+    {
+        "cidr": "192.169/16", 
+        "note": "test", 
+        "type": "network"
+    }
+]
