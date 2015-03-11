@@ -36,7 +36,7 @@ syntax = "proto2";
 service ContactService {
   // Sends a greeting
   rpc AddContact (Contact) returns (ContactAck) {}
-  rpc QueryContactName (Contact) returns (Contact) {}
+  rpc QueryContactName (QueryReq) returns (Contact) {}
 }
 
 // The request message containing the user's name.
@@ -50,7 +50,6 @@ message ContactAck {
  required string msg = 1;
 }
 
-// The response message containing the greetings
-message AddressBook {
-  repeated Contact contact = 1;
+message QueryReq {
+ required string name = 1;
 }

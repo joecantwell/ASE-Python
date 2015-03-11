@@ -8,11 +8,11 @@ class ContactService(addressbook_pb2.EarlyAdopterContactServiceServicer):
 	def __init__(self):
 		self.Contacts = []
 
+
 	def AddContact(self, request, context):
 		# add to a list
-		self.Contacts.add(request)
-		ack = addressbook_pb2.ContactAck()
-		ack.msg = "{0} added Successfully!".format(request.name)
+		self.Contacts.append(request)
+		ack = addressbook_pb2.ContactAck(msg = "Added!")
 		return ack
 
 

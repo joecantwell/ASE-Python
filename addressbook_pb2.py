@@ -18,7 +18,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='addressbook.proto',
   package='',
-  serialized_pb=_b('\n\x11\x61\x64\x64ressbook.proto\"2\n\x07\x43ontact\x12\x0c\n\x04name\x18\x01 \x02(\t\x12\n\n\x02id\x18\x02 \x01(\x05\x12\r\n\x05\x65mail\x18\x03 \x01(\t\"\x19\n\nContactAck\x12\x0b\n\x03msg\x18\x01 \x02(\t\"(\n\x0b\x41\x64\x64ressBook\x12\x19\n\x07\x63ontact\x18\x01 \x03(\x0b\x32\x08.Contact2a\n\x0e\x43ontactService\x12%\n\nAddContact\x12\x08.Contact\x1a\x0b.ContactAck\"\x00\x12(\n\x10QueryContactName\x12\x08.Contact\x1a\x08.Contact\"\x00')
+  serialized_pb=_b('\n\x11\x61\x64\x64ressbook.proto\"2\n\x07\x43ontact\x12\x0c\n\x04name\x18\x01 \x02(\t\x12\n\n\x02id\x18\x02 \x01(\x05\x12\r\n\x05\x65mail\x18\x03 \x01(\t\"\x19\n\nContactAck\x12\x0b\n\x03msg\x18\x01 \x02(\t\"\x18\n\x08QueryReq\x12\x0c\n\x04name\x18\x01 \x02(\t2b\n\x0e\x43ontactService\x12%\n\nAddContact\x12\x08.Contact\x1a\x0b.ContactAck\"\x00\x12)\n\x10QueryContactName\x12\t.QueryReq\x1a\x08.Contact\"\x00')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -99,17 +99,17 @@ _CONTACTACK = _descriptor.Descriptor(
 )
 
 
-_ADDRESSBOOK = _descriptor.Descriptor(
-  name='AddressBook',
-  full_name='AddressBook',
+_QUERYREQ = _descriptor.Descriptor(
+  name='QueryReq',
+  full_name='QueryReq',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='contact', full_name='AddressBook.contact', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
+      name='name', full_name='QueryReq.name', index=0,
+      number=1, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -125,13 +125,12 @@ _ADDRESSBOOK = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=100,
-  serialized_end=140,
+  serialized_end=124,
 )
 
-_ADDRESSBOOK.fields_by_name['contact'].message_type = _CONTACT
 DESCRIPTOR.message_types_by_name['Contact'] = _CONTACT
 DESCRIPTOR.message_types_by_name['ContactAck'] = _CONTACTACK
-DESCRIPTOR.message_types_by_name['AddressBook'] = _ADDRESSBOOK
+DESCRIPTOR.message_types_by_name['QueryReq'] = _QUERYREQ
 
 Contact = _reflection.GeneratedProtocolMessageType('Contact', (_message.Message,), dict(
   DESCRIPTOR = _CONTACT,
@@ -147,12 +146,12 @@ ContactAck = _reflection.GeneratedProtocolMessageType('ContactAck', (_message.Me
   ))
 _sym_db.RegisterMessage(ContactAck)
 
-AddressBook = _reflection.GeneratedProtocolMessageType('AddressBook', (_message.Message,), dict(
-  DESCRIPTOR = _ADDRESSBOOK,
+QueryReq = _reflection.GeneratedProtocolMessageType('QueryReq', (_message.Message,), dict(
+  DESCRIPTOR = _QUERYREQ,
   __module__ = 'addressbook_pb2'
-  # @@protoc_insertion_point(class_scope:AddressBook)
+  # @@protoc_insertion_point(class_scope:QueryReq)
   ))
-_sym_db.RegisterMessage(AddressBook)
+_sym_db.RegisterMessage(QueryReq)
 
 
 import abc
@@ -200,7 +199,7 @@ def early_adopter_create_ContactService_server(servicer, port, root_certificates
     ),
     "QueryContactName": utilities.unary_unary_service_description(
       servicer.QueryContactName,
-      addressbook_pb2.Contact.FromString,
+      addressbook_pb2.QueryReq.FromString,
       addressbook_pb2.Contact.SerializeToString,
     ),
   }
@@ -216,7 +215,7 @@ def early_adopter_create_ContactService_stub(host, port):
       addressbook_pb2.ContactAck.FromString,
     ),
     "QueryContactName": utilities.unary_unary_invocation_description(
-      addressbook_pb2.Contact.SerializeToString,
+      addressbook_pb2.QueryReq.SerializeToString,
       addressbook_pb2.Contact.FromString,
     ),
   }
